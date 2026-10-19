@@ -68,6 +68,11 @@ main a { color: var(--accent); }
 .wcol { display: flex; flex-direction: column; gap: 5px; }
 .wcol span { border: 1px solid var(--ink); padding: 3px 8px; border-radius: 3px; text-align: center; background: var(--panel); }
 .wmap i { color: var(--muted); font-style: normal; padding: 0 4px; }
+.wcol a { border: 1px solid var(--ink); padding: 3px 8px; border-radius: 3px; text-align: center; background: var(--panel); color: var(--ink); text-decoration: none; transition: border-color .12s, color .12s, background .12s; }
+.wcol a:hover, .wcol a:focus-visible { border-color: var(--accent); color: var(--accent); outline: none; }
+/* back to the weave map: shown once the map is scrolled out of view */
+#tomap { position: fixed; right: 16px; bottom: 16px; z-index: 10; font: 600 12px "IBM Plex Mono", monospace; letter-spacing: .04em; color: var(--panel); background: var(--accent); border: 0; border-radius: 999px; padding: 9px 14px; cursor: pointer; text-decoration: none; box-shadow: 0 2px 8px rgba(0,0,0,.18); opacity: 0; pointer-events: none; transform: translateY(6px); transition: opacity .15s, transform .15s; }
+#tomap.on { opacity: 1; pointer-events: auto; transform: none; }
 
 .howto { max-width: 42em; margin: 0 0 16px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 10px 14px 6px; }
 .howto h4 { margin: 0 0 6px; font: 600 11px "IBM Plex Mono", monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
@@ -170,7 +175,7 @@ main a { color: var(--accent); }
 <p>Loom runs on the NLM Xenomorpher and on standard O.R.N.8 hardware. The controls, screens and jacks described here are the same on both.</p>
 <div class="note">Loom needs a Teensy 4.1 with PSRAM (the extra memory chips). 8 MB (the usual Teensy 4.1 setup) is enough: REPEAT, FIBRE and DRAFT take their fixed share, and loops and samples share the rest, each taking only the length it really holds, up to 16 s. Without PSRAM, SPOOL, SHUTTLE, FIBRE, DRAFT and REPEAT can't run. The boot screen shows the version, <span class="mono">ALPHA 1</span>, or a blinking <span class="mono">NO PSRAM!</span> when there is none. The build number is on the card mode page.</div>
 <p>Loom has two tracks, <b>A</b> and <b>B</b>. Each track is a chain of six slots, played left to right as in the <a href="#weave-view">weave view</a>. Each slot holds one of the devices stacked in its column:</p>
-<div class="wmap"><div class="wcol"><span>INPUT</span><span>SPOOL</span><span>SHUTTLE</span><span>WARP</span></div><i>→</i><div class="wcol"><span>FIBRE</span><span>DRAFT</span></div><i>→</i><div class="wcol"><span>REED</span><span>BEATER</span><span>TWILL</span></div><i>→</i><div class="wcol"><span>TEXTURE</span><span>HEDDLE</span></div><i>→</i><div class="wcol"><span>REPEAT</span></div><i>→</i><div class="wcol"><span>CLOTH</span></div></div>
+<div class="wmap" id="map"><div class="wcol"><a href="#input">INPUT</a><a href="#spool">SPOOL</a><a href="#player">SHUTTLE</a><a href="#warp">WARP</a></div><i>→</i><div class="wcol"><a href="#spray">FIBRE</a><a href="#stretch">DRAFT</a></div><i>→</i><div class="wcol"><a href="#resonator">REED</a><a href="#modal">BEATER</a><a href="#chime">TWILL</a></div><i>→</i><div class="wcol"><a href="#texture">TEXTURE</a><a href="#heddle">HEDDLE</a></div><i>→</i><div class="wcol"><a href="#echo">REPEAT</a></div><i>→</i><div class="wcol"><a href="#output">CLOTH</a></div></div>
 <p>The four effect slots in the middle can be put in any order, and each can also hold nothing at all:</p>
 <div class="tbl-wrap"><table>
 <tr><th>Slot</th><th>Choices</th></tr>
@@ -1117,6 +1122,11 @@ main a { color: var(--accent); }
 (function(){function open(){var h=location.hash;if(!h)return;var t=document.getElementById(h.slice(1));for(var e=t;e;e=e.parentElement)if(e.tagName==='DETAILS')e.open=true;if(t)t.scrollIntoView();}
 window.addEventListener('hashchange',open);document.addEventListener('DOMContentLoaded',open);
 document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a[href^="#"]');if(!a)return;var t=document.getElementById(a.getAttribute('href').slice(1));for(var e=t;e;e=e.parentElement)if(e.tagName==='DETAILS')e.open=true;});})();
+</script>
+<a id="tomap" href="#map" aria-label="Back to the weave map">&uarr; Weave map</a>
+<script>
+(function(){var b=document.getElementById('tomap'),m=document.getElementById('map');if(!b||!m||!('IntersectionObserver' in window)){if(b)b.classList.add('on');return;}
+new IntersectionObserver(function(e){var r=e[0];b.classList.toggle('on',!r.isIntersecting&&r.boundingClientRect.top<0);}).observe(m);})();
 </script>
 </body>
 </html>
