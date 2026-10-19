@@ -71,9 +71,6 @@ main a { color: var(--accent); }
 /* the map's devices are links: accent frame, a hand, filled on hover */
 .wcol a { border: 1px solid var(--accent); padding: 6px 12px; border-radius: 3px; text-align: center; background: var(--panel); color: var(--ink); text-decoration: none; cursor: pointer; box-shadow: 0 1px 0 color-mix(in srgb, var(--accent) 45%, transparent); transition: border-color .12s, color .12s, background .12s; }
 .wcol a:hover, .wcol a:focus-visible { background: var(--accent); color: var(--panel); outline: none; }
-/* every section: back to the base (the weave map) */
-h2 .tobase { float: right; font: 600 12px "IBM Plex Mono", monospace; letter-spacing: .04em; color: var(--accent); text-decoration: none; border: 1px solid var(--accent); border-radius: 999px; padding: 4px 10px; margin-top: 6px; }
-h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: var(--panel); outline: none; }
 .wmap-hint { font-size: 13px; color: var(--muted); margin: -8px 0 16px; }
 /* back to the weave map: shown once the map is scrolled out of view */
 #tomap { position: fixed; right: 16px; bottom: 16px; z-index: 10; font: 600 12px "IBM Plex Mono", monospace; letter-spacing: .04em; color: var(--panel); background: var(--accent); border: 0; border-radius: 999px; padding: 9px 14px; cursor: pointer; text-decoration: none; box-shadow: 0 2px 8px rgba(0,0,0,.18); opacity: 0; pointer-events: none; transform: translateY(6px); transition: opacity .15s, transform .15s; }
@@ -181,7 +178,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 <div class="note">Loom needs a Teensy 4.1 with PSRAM (the extra memory chips). 8 MB (the usual Teensy 4.1 setup) is enough: REPEAT, FIBRE and DRAFT take their fixed share, and loops and samples share the rest, each taking only the length it really holds, up to 16 s. Without PSRAM, SPOOL, SHUTTLE, FIBRE, DRAFT and REPEAT can't run. The boot screen shows the version, <span class="mono">ALPHA 1</span>, or a blinking <span class="mono">NO PSRAM!</span> when there is none. The build number is on the card mode page.</div>
 <p>Loom has two tracks, <b>A</b> and <b>B</b>. Each track is a chain of six slots, played left to right as in the <a href="#weave-view">weave view</a>. Each slot holds one of the devices stacked in its column:</p>
 <div class="wmap" id="map"><div class="wcol"><a href="#input">INPUT</a><a href="#spool">SPOOL</a><a href="#player">SHUTTLE</a><a href="#warp">WARP</a></div><i>→</i><div class="wcol"><a href="#spray">FIBRE</a><a href="#stretch">DRAFT</a></div><i>→</i><div class="wcol"><a href="#resonator">REED</a><a href="#modal">BEATER</a><a href="#chime">TWILL</a></div><i>→</i><div class="wcol"><a href="#texture">TEXTURE</a><a href="#heddle">HEDDLE</a></div><i>→</i><div class="wcol"><a href="#echo">REPEAT</a></div><i>→</i><div class="wcol"><a href="#output">CLOTH</a></div></div>
-<p class="wmap-hint">Click a device to jump to its part of the manual; the &uarr; Weave map button brings you back here.</p>
+<p class="wmap-hint">Click a device to jump to its part of the manual; the &uarr; Weave map button at the bottom right brings you back here.</p>
 <p>The four effect slots in the middle can be put in any order, and each can also hold nothing at all:</p>
 <div class="tbl-wrap"><table>
 <tr><th>Slot</th><th>Choices</th></tr>
@@ -194,7 +191,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 </table></div>
 <p>Each track also has four modulators of its own (A–D), and both tracks share four more (E–H). Any setting can be moved by up to two of them. The eight CV jacks can output any modulator, so Loom can also drive the rest of your system.</p>
 <p><b>In the rack.</b> The two audio inputs take any line or modular level: an oscillator after its VCA, a drum module, a mixer's send. Envelopes and gates shape what Loom does with it. A sharp attack makes BEATER and REED ring, a sequence with rests leaves room for the echoes and grains, and the FOLLOW modulator turns the level coming in into movement. The trigger inputs, and the CV inputs used as gates, can press any device's actions (freeze, hit, record), and can run the clock from your sequencer. The eight CV outputs send the modulators and the clock back out to the rest of the rack.</p>
-<h2 id="controls">Panel controls <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="controls">Panel controls</h2>
 <div class="tbl-wrap"><table>
 <tr><th>Control</th><th>What it does</th></tr>
 <tr><td>L knob</td><td>Turn: picks a device (in the weave view) or a setting's <i>mode</i> (on a device page). Push: modulation on/off for the setting under the cursor.</td></tr>
@@ -211,7 +208,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 <tr><td>R knob held 2 s</td><td>On a device page: the device back to its default settings.</td></tr>
 <tr><td>L knob held 2 s</td><td>Right after such a reset: undo it.</td></tr>
 </table></div>
-<h2 id="weave-view">The weave view <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="weave-view">The weave view</h2>
 <p>The weave view is Loom's home screen. It shows both tracks as two rows of boxes, each box one device in the chain, in the order the sound passes through them. Every box draws a small live picture of what its device is doing: a loop going round, a file playing, the level coming in. So you see the whole set at a glance.</p>
 <p>Here you build the chain: put devices in the slots, change their order, bypass them, and open their pages. The bottom line names the device under the cursor and shows the level coming in.</p>
 <div class="shots">
@@ -247,7 +244,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
   <li><b>Last resort.</b> If the processor is ever completely swamped, Loom leaves out a few milliseconds of sound instead of freezing.</li>
 </ul>
 </details>
-<h2 id="link">Linking A and B <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="link">Linking A and B</h2>
 <p>The two tracks can run on their own or be linked. In THREAD, track A runs on into track B, one long chain over two rows. In LOOSE and TIGHT, the tracks keep their own sound but share the knobs, so a stereo pair or a doubled part moves as one.</p>
 <p>A short label pops up when you change the link, and a small sign between the A and B letters on the left shows the mode afterwards. Nothing is lost on the way: B's own settings wait while it follows A, and come back when you leave.</p>
 <div class="shots">
@@ -271,7 +268,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 </table></div>
 <p>Track B can also take track A's output in its INPUT device (source <span class="mono">OUT A</span>) without linking. There is no feedback route from B back to A. If you want feedback, patch it with cables.</p>
 </details>
-<h2 id="device">Device pages <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="device">Device pages</h2>
 <p>Every device has a page of its own, and every page works the same way. The top line names the track and the device and shows its two actions. The middle is a live picture of what the device is doing to the sound. At the bottom sit four settings, names above and values below, on one or two pages.</p>
 <p>Each setting has two sides. The R knob sets its value. The L knob sets its <i>mode</i>: another way of working, a zoom for the picture, or a variation that moves the setting around your value with every beat, so the sound keeps changing on its own.</p>
 <div class="shots">
@@ -326,7 +323,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 <tr><td>CLOCK</td><td>TAP: tap the tempo</td><td>RST: the beat from one again, everything on the clock with it</td></tr>
 </table></div>
 </details>
-<h2 id="modulation">Modulating a setting <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="modulation">Modulating a setting</h2>
 <p>Any setting on any page can be moved by up to two modulators at once: a wave, an envelope, a random pattern, a follower, a drum pattern, a clock divider, or a MIDI controller. They add up around the value you set, so the setting is the middle and the modulators swing it from there.</p>
 <p>A modulated setting shows how far it can move as a line under its value, with a tick where it is right now, so you can see the movement even without hearing it. Pitch settings can also follow the notes of a MIDI keyboard.</p>
 <div class="shots">
@@ -356,7 +353,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 <p>Every pitch setting (FIBRE's, REED's and DRAFT's PITCH, BEATER's NOTE) has one more source: <b>MIDI</b>. In MOD1 or MOD2, turn the L knob <b>one click left</b> from <span class="mono">off</span>: it reads <span class="mono">MIDI</span>, and the amount goes to +100 % by itself. The setting now follows the last MIDI note played, on any channel: C3 (note 60) leaves it as it is, each key above or below moves it a semitone. At −100 % the keyboard runs upside down. The last note stays when you let go. Turn right again to get back to <span class="mono">off</span>.</p>
 <p>With a RANDOM on MOD1 and MIDI on MOD2, the random melody is transposed by the key you hold.</p>
 </details>
-<h2 id="input">INPUT <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="input">INPUT</h2>
 <p>INPUT is the plain way in: the sound at the track's audio jacks, straight into the chain. It takes any line or modular level, in stereo or from one side only, and on track B it can also take track A's output, so B can process A without linking the tracks.</p>
 <p>Its picture is a small oscilloscope. It shows the sound as it arrives, from a few cycles of a single note up to whole phrases, so you can see at a glance that something is coming in and how hard.</p>
 <div class="shots"><figure><div class="oled"><img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAABACAAAAAD3vSCjAAACOUlEQVR42u1ZC7LDIAjk/pfeNy8NCoiAptNkprVJ81FhRUQgBC50Uzl4NwDH9f+W3/V7lOm9rucjZV0P/q3byfDoKP4bvZw/nx1A0vs1flIAcAmA6I5NAAQzBRUAr2niHx+VKZAXZgYQzJRUVaDrDLanoHWkbR0g0BYAqflKq7GwqoQylabgAXbgzkJfVm4XAGbPb4KSDikAgPcMMKEzB/AeGSCTZQCA8k1zwQ7uAIgQoO0NBQDYAHCaW0QbVhVAiGAKIFoLC7sBsiWVAHC7yn2ysBfHZCaGCIE9AKgKoEDGByCb264AVQFUyLgAdOPpExb422XbxegAmI/Z3K/wN9hBCQB1gOyb88Dk/enWz+mwm1XeDYFYH6tmcqRT3Y4ndRGfGp26PzCzSUv8PQW76JA4PZaIXPeIEC2az7hkkdn4jE8YWbzPOKU6m3CPV3xBhW52y38Avh7ArzwwAdIt25AklYZOxgYqfScTa/ynk2ScKFLuCb8RIc+YHnV4tASYU9kb6WSbANDZlgHoiMekYn0A5iwAsLk5mSQV0TssZZGP9pljYEc9EoDOY9uxm2hU58yh4/kpgFgCMQDy9MzjMALwdKBxcwEonZcqrlcBtLqr0Lb3hFUXXm06DGqQ8Ag78Ci7leQ+hKyX6gfLtgoAw6ccs07j+lriPpVAjzjHnE1Wz4sL/C1kIo0EgPgkY5pm9WzJZYt1ACZI36xnWexIQNsq1OvhaQLqcTkNtmqIkMJ6zHb8X/mVB5Q/yN8JTJdYHS8AAAAASUVORK5CYII="></div><figcaption>Track A's INPUT with a synth coming in, VIEW at 20 ms: a few cycles of the wave. The picture works like a small oscilloscope: it starts at an upward crossing and its height follows the sound. The top line shows the jack's level, -04dB.</figcaption></figure>
@@ -379,7 +376,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 <tr><td>VIEW</td><td>How much time the picture shows: 2, 5, 10, 20, 50, 100, 200, 500 ms or 1 s. Short shows the waveform of a note, long shows rhythm. It changes only the picture, not the sound.</td></tr>
 </table></div>
 </details>
-<h2 id="spool">SPOOL <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="spool">SPOOL</h2>
 <p>SPOOL is a live looper at the start of the chain. It records what comes in, up to 16 seconds, and plays it round and round while you overdub, trim it, slow it down or turn it backwards. Everything after it in the chain works on the loop, so a phrase you play once becomes material for the effects to chew on.</p>
 <p>It only holds memory for what you record: the loop keeps just its own length and gives the rest back. A loop can be saved to the card and opened in SHUTTLE, and a WARP on the other track picks it up by itself, so you can play it from a keyboard straight away.</p>
 <div class="shots">
@@ -410,7 +407,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 <tr><td>VIEW</td><td>Zooms the picture; it changes only the picture, not the sound. The <b>L knob</b> sets how close: ALL shows the whole loop; LOOP only the part that plays, START to END across the whole width; 2 s, 1 s, 500, 200, 100, 50, 20, 10 and 5 ms show that much of the waveform (shown top right). The <b>R knob</b> sets where it looks: HEAD rides along with the play head, 0–100 % holds the view still at that place in the loop while the head passes by. Small marks show the loop's ends when they're in view.</td></tr>
 </table></div>
 </details>
-<h2 id="player">SHUTTLE <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="player">SHUTTLE</h2>
 <p>SHUTTLE plays sound files from the SD card: drum loops, field recordings, whole songs, your own saved loops and takes. It can stream any length straight from the card, or load a loop of up to 16 seconds into memory, where it can also play backwards.</p>
 <p>It finds the tempo of a file by itself, so it can play in time with the clock, and each file remembers its own loop points and settings. Pick a file again weeks later and it comes back the way you left it.</p>
 <div class="shots">
@@ -442,7 +439,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 </table></div>
 <div class="note">Changes to START and END take effect at the next pass over the loop seam, so moving them doesn't click.</div>
 </details>
-<h2 id="warp">WARP <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="warp">WARP</h2>
 <p>WARP turns a sound into an instrument. It plays the other track's loop or file, or a single-cycle waveform, at the pitch of the MIDI notes you play, up to eight notes at once. Middle C plays the sound as it was recorded; every key above or below plays it faster and higher or slower and lower, like a tape at another speed, and a held note goes round the sound for as long as you hold the key.</p>
 <p>Each note has its own envelope, and pressing a key harder makes it waver, like a violinist's vibrato. So a drum loop becomes a pitched texture, a recorded voice a choir, and a waveform from the card a plain synth voice.</p>
 <div class="shots">
@@ -485,7 +482,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 <h3 id="weft">WEFT: pressing harder</h3>
 <p>WARP stretches a sound across the keyboard like warp threads on a loom (see <a href="#weave">the weaving words</a>): every key holds it at another pitch. WEFT is what your hand does while a key is down, the thread drawn across. <b>Press a key hard</b> and its note starts to waver, like a violinist's vibrato: nothing happens up to three quarters of the key's pressure, then the wobble grows with the pressure, up to a semitone either way when you press all the way down. The L knob on WEFT picks what wavers instead of the pitch: LVL pulses the level, down to silence at full pressure, a tremolo; CUT sweeps a filter, darker the harder you press, with a wah-like wobble; PAN swings the note between left and right. It eases in and out, and every note wobbles at its own slightly different pace, so a chord shimmers rather than moving in lockstep. WEFT sets how fast. Each note follows its own key's pressure (polyphonic aftertouch) or the whole keyboard's (channel aftertouch), whichever is pressed harder; a keyboard without aftertouch just plays the notes plainly.</p>
 </details>
-<h2 id="spray">FIBRE <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="spray">FIBRE</h2>
 <p>FIBRE pulls the sound apart into grains: tiny slices of the recent past, each played back with its own length, pitch and place in the stereo field. Many grains at once make a cloud, from a soft shimmer around the sound to a glittering swarm that has little left of the original.</p>
 <p>It keeps listening while it plays, so the cloud follows what you play. Freeze it, and it holds the sound it has and keeps scattering grains from it for as long as you like.</p>
 <div class="shots">
@@ -514,7 +511,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 <tr><td>MIX</td><td>variation</td><td>Source ↔ grains.</td></tr>
 </table></div>
 </details>
-<h2 id="stretch">DRAFT <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="stretch">DRAFT</h2>
 <p>DRAFT changes the pitch of a sound without changing its speed. It keeps the last four seconds of the track like a tape loop and plays them back in short, overlapping windows, so a voice can sing an octave lower at the same pace, or a chord shift up without hurrying.</p>
 <p>Frozen, it works the other way round: it stops recording and holds what it has, and SPEED moves through the held sound without changing the pitch. At 0 % it stays on one spot as a steady, held texture.</p>
 <div class="shots">
@@ -544,7 +541,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 <tr><td>MIX</td><td>variation</td><td>Dry ↔ wet.</td></tr>
 </table></div>
 </details>
-<h2 id="resonator">REED <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="resonator">REED</h2>
 <p>REED is a bank of 48 resonant bands, tuned to a note and a scale, like the reed of a loom with one thread in every slot. With a short decay it is a filter with a character of its own: a peak that can be gentle or sharp, and a slope that tilts the sound from dark to thin.</p>
 <p>Turn the decay up and the bands start to ring on as pitches after every hit. Any sound turns into pitched ringing in the scale you pick: a drum loop becomes a chord, a stream of hits a melody.</p>
 <div class="shots">
@@ -574,7 +571,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 </table></div>
 <p><b>Arpeggios.</b> A new hit never cuts off what is still ringing: earlier hits ring out at their own notes while the new one sounds. With PITCH's variation on, each hit lands on one note of the scale, so a plain stream of triggers turns into a melody. To hear it best, set SCALE to PENTA, PITCH's variation to about ±7 and DCAY well past the middle, and put CUT where you want the melody to sit. Short, plucky envelopes or drum hits work best. Add TONE's variation and some hits sound brighter than others, like a player varying their touch.</p>
 </details>
-<h2 id="modal">BEATER <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="modal">BEATER</h2>
 <p>BEATER makes your sound strike a virtual object, a string, a bar or a bell, and the object rings at the note you set. Every new hit in the sound, a drum, a pluck or an envelope opening, strikes it again, so a plain rhythm turns into a played, tuned instrument.</p>
 <p>Five models give it different bodies: a resonator with many partials, a set of strings that ring along like a sitar's, a single string, an FM tone, and sympathetic strings tuned to chords.</p>
 <div class="shots">
@@ -604,7 +601,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 <tr><td>MIX</td><td>Dry ↔ wet. The L knob sets its variation. The L knob sets its variation.</td></tr>
 </table></div>
 </details>
-<h2 id="chime">TWILL <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="chime">TWILL</h2>
 <p>TWILL is six bells tuned to the notes of a chord or a scale. Only those notes ring, clean and glassy, whatever goes in: a drone turns into a chord, and every hit rings the bells like struck glass. Each bell is two filters on the same note, one that lets only that note in and one that sets how long it rings.</p>
 <p>The bells can ring together as a chord or one after another as an arpeggio. They can walk through the chord, follow the key you play, or drift to richer notes of the same chord family on every hit. The tunings go from the piano's to pure intervals and the scales of gamelan and Indian music.</p>
 <div class="shots">
@@ -638,7 +635,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 <p>Like everything in Loom, every TWILL setting can be modulated (push L on it). The six notes sit along the bottom as small boxes, low on the left and high on the right, filled where the sound goes. Each ringing note is a line rising from its box, as tall as it is loud, and bold while it is getting the sound. A note from an earlier hit that is still ringing has no box under it any more and is drawn dotted. On the right: the output level. In stereo the bells take turns, a little to the left and a little to the right, so a chord sounds wide while a single bell stays near the middle.</p>
 <div class="note">Good starting points. <b>Arpeggio:</b> SCALE MAJ7, SPRD 1, DIR 1/6 on UP, DCAY around 2 s, a TREADLE on HIT. <b>Shimmering chord:</b> SCALE ADD9, DIR 6/6 on OFF, SPRD 1, DCAY long, with a drone or noise going in. <b>Walking chord:</b> SCALE MIN7, DIR 4/6 on OFF, a slow WAVE on ROTA, MORPH long. <b>Played chords:</b> SCALE MAJ, KEY on MIDI: each key you play rings a major chord on it. <b>Wandering bells:</b> SCALE PENTA, DIR 2/6 on RAND, VARI ±3. <b>Gamelan:</b> SCALE PELOG, DIR 1/6 on UP, DCAY short to medium.</div>
 </details>
-<h2 id="texture">TEXTURE <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="texture">TEXTURE</h2>
 <p>TEXTURE is the dirt and colour of the chain: drive, wavefolding, bit and sample-rate crushing, a tilt EQ, and noise that follows the input's level. It goes from a little warmth to a broken, metallic crunch, and its noise can add hiss, breath or the crackle of an old record that comes and goes with the sound.</p>
 <p>DRIVE, FOLD and TILT even out the level as they work, so turning them up changes the sound, not the volume. A fresh TEXTURE starts clean, with everything at 0. Its slot can hold <a href="#heddle">HEDDLE</a> instead.</p>
 <div class="shots">
@@ -668,7 +665,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 <tr><td>MIX</td><td>variation</td><td>Dry ↔ wet.</td></tr>
 </table></div>
 </details>
-<h2 id="heddle">HEDDLE <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="heddle">HEDDLE</h2>
 <p>HEDDLE lifts a sound up or pushes it down, as the heddles of a loom lift and lower the threads. As a <b>frequency shifter</b> it moves every frequency by the same number of Hertz, so the harmonics stop fitting together: a plain note turns bell-like and metallic, large shifts clang like a ring modulator, and tiny shifts make a slow, rolling phasing.</p>
 <p>As an <b>endless phaser</b> it leaves the pitch alone and sweeps a row of notches up or down through the sound for ever, the barber-pole sweep that never turns round. It works best on rich sounds: pads, noise, chords, distorted sources. HEDDLE goes in TEXTURE's slot instead of TEXTURE.</p>
 <div class="shots">
@@ -703,7 +700,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 <p><b>Variations.</b> SIDE / STAGE, FDBK / RESO and MIX each have a variation on the <b>L knob</b> (OFF to start). The thin line over the name shows how much: it grows out from the middle, as the variation goes up and down (SIDE's chance, which has no up or down, grows from the left), and with the variation off only a small mark is left. On every beat of the clock HEDDLE picks a new random value around the setting: FDBK, RESO and MIX glide there, a new side fades over in a few milliseconds, and a new stage count blends in, so nothing clicks. The picture follows what you hear: its stripes change side, width, thickness and fill with each beat.</p>
 <p>PHASE takes noticeably more of the processor than SHIFT (roughly 0.6 % per stage). Loom checks for room before it switches to PHASE or adds stages (with STAGE's variation, for the most stages it can reach); if there is none, it stays put and shows <span class="mono">CPU FULL</span>.</p>
 </details>
-<h2 id="echo">REPEAT <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="echo">REPEAT</h2>
 <p>REPEAT is a tape-style stereo delay: every sound comes back after the delay time, and goes round again as long as the feedback lets it. On each pass the repeats are darkened or thinned, smeared across the stereo field and gently saturated, so a long trail wears down like an old tape loop instead of staying clean. More playback heads can join before the main echo, in one of thirteen patterns, from a dotted eighth or a triplet to a slapback, a clave or the uneven heads of an old tape echo.</p>
 <p>Page 2 is a reverb built from eight lines that feed into each other, some of them slowly wobbling so the tail never rings metallic. It reaches from a small room to a sixteen second cloud, with soft, dark walls or hard, bright ones. It can also shimmer: the tail is pitched and sent back into itself, so it climbs with every pass into a halo above the sound, in one of twenty recipes. Turning through the recipes, Loom waits until the knob rests (about a quarter of a second) and then blends into the new one, so the recipes passed on the way don't cut in.</p>
 <div class="shots">
@@ -780,7 +777,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 <tr><td>WALL</td><td>WALL / PRSET</td><td>Soft walls (dark and dense) ↔ hard walls (bright, with audible reflections). Also colours the delay. Turn the L knob right to switch to PRSET, and the R knob picks GLINT's preset, one of twenty (see above). Turn L left for WALL again.</td></tr>
 </table></div>
 </details>
-<h2 id="output">CLOTH <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="output">CLOTH</h2>
 <p>CLOTH is the end of every track: what comes off the loom. It sets how loud the track is, where it sits between left and right, and how much of the effects you hear against the dry source. Its picture is a live spectrum analyser of the track's output.</p>
 <p>Page 2 is a three-band EQ with a compressor in each band, so the lows, mids and highs can each be lifted, cut or held together on their own. A limiter behind it keeps the tracks from ever clipping. CLOTH is also where you record the whole set to the card.</p>
 <div class="shots">
@@ -838,7 +835,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 <p>Names don't carry a date, because the module has no clock battery and doesn't know the date after it has been switched off.</p>
 <div class="note">While it records, BOLT holds back about 1 MB of memory to ride over the moments when the card pauses. SPOOL and SHUTTLE have that much less while a take runs. If the card can't keep up (a slow or very old card), <span class="mono">SLOW</span> blinks in place of the time and a little audio is lost. If a take can't start, CLOTH's header says why for 3 seconds: <span class="mono">NO CARD</span> or <span class="mono">NO MEM</span>.</div>
 </details>
-<h2 id="mods">Modulators <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="mods">Modulators</h2>
 <p>Each track has four modulators of its own, A to D, and both tracks share four more, E to H. A modulator is a source of movement: a wave (WAVE), an envelope (ADSR), a random pattern (RANDOM), a follower of the level (FOLLOW), a drum pattern (TREADLE) or a set of clock dividers (PICK). They move settings, strike devices' actions and come out of the eight CV jacks.</p>
 <p>The MOD view shows them as a row of boxes, each drawing what its modulator puts out, newest on the right. Page 1 is the track's own, page 2 the shared ones, page 3 the CV outputs and page 4 the MIDI maps.</p>
 <div class="shots">
@@ -863,7 +860,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
   <li><b>L push</b>, then <b>L turn</b>, picks what the box sends. Most modulators have one output, but PICK and TREADLE have several. On their own box, this picks which of their outputs it sends. Any other box can instead send one of their outputs. The bottom line shows the choice, lit while you turn; <b>L push</b> again (or Y) ends it. See <a href="#outputs">Several outputs</a>.</li>
 </ul>
 </details>
-<h2 id="modtypes">Modulator types <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="modtypes">Modulator types</h2>
 <p>Six kinds of modulator. <b>WAVE</b> is a cycling wave, free or on the clock. <b>RANDOM</b> makes new values, or repeating patterns that slowly change, and can play them as notes of a scale. <b>ADSR</b> is an envelope with its own curves, played by a gate, a note or another modulator, once or looping. <b>FOLLOW</b> traces how loud the track is.</p>
 <p><b>TREADLE</b> plays drum grooves and <b>PICK</b> divides a clock into rhythms; both have several outputs and are described below. Every modulator's page works like a device page, so its settings can be modulated too.</p>
 <div class="shots">
@@ -995,7 +992,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
   <li>On a CV output, a RANDOM with QUANT on comes out as pitch: 1.2 V per octave on the Buchla-format module, 1 V per octave on the Serge and Eurorack formats. The module knows which one it is, so there is nothing to set. Patch it into an oscillator and it plays in tune, over four octaves from 0 V.</li>
 </ul>
 </details>
-<h2 id="clock">Clock <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="clock">Clock</h2>
 <p>One clock runs everything in Loom that keeps time: synced delays and modulators, SHUTTLE on SYNC, TREADLE and PICK, the variations that move on every beat. It runs on its own tempo, or follows MIDI clock or pulses at a trigger or CV input from your sequencer.</p>
 <p>A small play triangle or stop square in the top line shows whether it runs. Synced modulators hold while it is stopped and start again together with it.</p>
 <div class="shots">
@@ -1019,7 +1016,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 <tr><td>PPQN</td><td>Pulses per beat for an external trigger clock: 1, 2, 4 or 24. Not used with SHU A / SHU B.</td></tr>
 </table></div>
 </details>
-<h2 id="cv">CV outputs <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="cv">CV outputs</h2>
 <p>Eight jacks, A to H, send modulators out to the rest of the rack, 0 to 10 V. A wave becomes an LFO for a filter, an ADSR an envelope, a TREADLE's parts triggers for three drums. A RANDOM with QUANT on comes out as pitch, in tune at the module's own volts per octave.</p>
 <p>They live on page 3 of the MOD view. By default A to D carry track A's modulators and E to H track B's.</p>
 <div class="shots"><figure><div class="oled"><img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAABACAAAAAD3vSCjAAABs0lEQVR42u2ZjXbDIAiFef+X/ra1aQTE36RNtsk5TU4h6g2g3qCICPB9kefvIUrDjzyuVrOpRgXbjNcFA8BqKGrmBDUISfExAPgx+gCYMLGHaRrB1s2QB/K3n0eAzocdDPJ+AMrz6uV1LiiN0iP+SSZDYJvNp/IfEi6WFYG7JEL4H5UmwWxO2tCetHmkcVocAux6kS39CNH6VLEH/eNX3mi1otteWe2a7dsDOB8mWiAnAXAjJA5S8MDTXvbAbpeu9qeEoGEn9FB3DjRCIKG9PAv29mv5+QX74UfsFVZCn73YfV/7BeAGAK5OwiVLbrMSXwdA3/T+j5QZU40VY75tY0Zk6II4D/jv9TLnO8iYqALoYb2nsGKygguubEboYr2dhiEqVcZ8/0UPGFY8F4JeD5wQgmM5EM6COu/3s4Ajs2BtTYsVF41IvSZLI4kCAAOUbAG4HMBixUv+cZ02UOuM1SWoc44/egAYjiyQl9rygu/AXrRRMDGHRbpze1KFKSaXin2DHkg0EnfPQ/AeAGqkjKMVDxWpfL4MAcDQR/b37ACAHPaAcr/mi9jT9OYsOHaifZ18AVl9Z+2JXhV8AAAAAElFTkSuQmCC"></div><figcaption>The CV outputs, page 3 of the MOD view. Each box: the jack, its source (track and modulator) and a live level bar, 0 to 10 V. Output E is under the cursor; the bottom line names its source in full.</figcaption></figure>
@@ -1038,7 +1035,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
   <li><b>L push</b> bypasses the jack (0 V). Shown as <span class="mono">--</span>.</li>
 </ul>
 </details>
-<h2 id="midi">MIDI maps <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="midi">MIDI maps</h2>
 <p>Loom has 32 MIDI maps, M1 to M32. Each one listens to one thing from your MIDI controller, a CC knob, notes, velocity or the pitch bend wheel, and turns it into a source like a modulator. A map can move any setting, or press a device's actions on its trigger page.</p>
 <p>They live on page 4 of the MOD view. Each map learns its control from your controller, so there is nothing to look up.</p>
 <div class="shots">
@@ -1067,7 +1064,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 </table></div>
 <p>The quick way: put the cursor on a setting, push L for MOD1 and <b>hold <span class="k">X</span></b>. Loom picks a free map, starts it learning and sets the amount to 50 %. Then move a knob on your controller. The maps are saved with the module's own settings when you leave a map's page.</p>
 </details>
-<h2 id="presets">Presets &amp; saving <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="presets">Presets &amp; saving</h2>
 <p>Loom keeps your working settings, the whole set across both tracks, and 30 preset slots to store and recall complete setups. It always starts with the last saved settings, not a preset. You can save the whole state, or just the device you are working on, and leave the rest as it was.</p>
 <p>Loom doesn't save by itself, so hold Y before you switch off. Storing and recalling both need a hold, so nothing happens by accident in the middle of a set.</p>
 <div class="shots">
@@ -1085,7 +1082,7 @@ h2 .tobase:hover, h2 .tobase:focus-visible { background: var(--accent); color: v
 <p>The working settings are saved when you hold <span class="k">Y</span> for 2 s (not in a file list, where Y goes up a folder). What is saved depends on where you are. In the weave view, the MOD view, the CV outputs and the MIDI maps it is <b>SAVE STATE</b>: everything, both tracks, every device, the modulators, the clock, the links and where you were. On a device's page (a modulator's and the clock's too) it is <b>SAVE DEVICE</b>: only that device's settings, while everything else stays as it was last saved. The box shows which while you hold, then <span class="mono">STATE SAVED</span> or <span class="mono">DEVICE SAVED</span>. Both only change what Loom starts with after switching on; the presets are never touched. (If a device has never been saved before, SAVE DEVICE saves everything once instead.) Presets live in <span class="mono">LOOM.BIN</span> on the SD card. Loom always starts with the last saved settings, not a preset.</p>
 <div class="note">Loom doesn't save by itself. Anything changed since the last save is gone when the power goes off, so hold Y before you switch off. Saving takes a moment in which the sound stops for about an eighth of a second, so save between pieces rather than in the middle of one.</div>
 </details>
-<h2 id="card">Card mode <a class="tobase" href="#map" aria-label="Back to the weave map">&uarr; Back to base</a></h2>
+<h2 id="card">Card mode</h2>
 <p>Card mode connects the module's SD card to your computer over USB, so you can copy sound files onto it and get your loops and recordings off it, without taking the card out. Loom pauses while it is open, and the module itself shows the card's contents, so you can listen to files and delete them right there.</p>
 <div class="shots">
   <figure><div class="oled"><img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAABACAAAAAD3vSCjAAACcUlEQVR42u2Zi5KCMAxF8/8/fXZGpM2rJbzWdbUzIgqUS9Lk3gSR1w/g8bXs0v4YX9A27evU/ZcPy0btbF92kQEUDL3NQLKYSZnteUU330kAiwtGAPSecgHksPcBeNy7T+MB8LRACkBOA8B4P64BJIBDzG/6Cm6ukaJLlNmbIyLKECR9KRgHHQBwcTi/3eDFQ77jO/4OHRe49wxFjufh6IXXAlh55slsWPNgOFgfUOeD4NJ7YZ5MCaDZqCV1y3dommh6BvdQ2/NIoCHcCVgrOQDtfAnwavMkUkTChdo+I7tVAGTzGDqO9NrNpiSZWwMYa8jeea7XmP8vTc2ObOlA7gSwhr6XjxxMxaui7OpS68OQWNawQtcLOAA6+VQLE3x5wjSxqCBkbKW5K0oAdLiFxOKCMeGZTQCEfNgkNjbVZJNbwLsBWFpRxlyTMi5ZxSgYFdWDQu8XC9/3VkSGH1VVekuqS0NoVQ/lxXQKQFREvh7mruUxUkQGwOqm2wEoRZSanptdQKJnghK8vKAcKKIEAHILgI9XRFSOeyEwm4OgTsjSXRPnbN0fX4hkOSv9QdDDs6av10WRULGFGPlDi2fP1v1z2kmEYasWV2IY9keCPsBxNKpQ6JrC6wqkAkDxkBMe6bogFGsrnQVhQ6lZnbkgFpikQiV2VaPY689I1vm0xRTidWBK6Ejma6ucj1ErH5OIyNupgzbraYsNAcDgPIr9pTIAvzzoJc0g12QAzNuWWMrN2FhcecXULaZRo0Mh9kxKb7+S8orI+4ycQaqsdpUkiSbcYECfeJ0L0HasAFDdHrMGKlGQZHYmb99eqiu+4zsG4wddpIO1IUvZ0AAAAABJRU5ErkJggg=="></div><figcaption>Waiting for the computer: the page tells you how to connect, and shows Loom&rsquo;s version and build number. Hold Z and push R to get here; Loom saves its settings and pauses, and the sound stops until you go back.</figcaption></figure>
