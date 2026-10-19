@@ -12,4 +12,4 @@ Patch in your voices, drums or anything else from the rack: each track takes a s
 
 Firmware files are on the [Releases](https://github.com/ArguZ-NLM/Loom/releases) page.
 
-Loom is built on [Phazerville Suite](https://github.com/djphazer/O_C-Phazerville). The source code is in [ArguZ-NLM/O_C-Phazerville](https://github.com/ArguZ-NLM/O_C-Phazerville/tree/XENO-loom).
+Loom is a new app by Sascha A. W. Haber. Thanks to the [Phazerville Suite](https://github.com/djphazer/O_C-Phazerville) and [Ornament & Crime](https://ornament-and-cri.me/) projects, whose open-source code it runs on. The source code is in [ArguZ-NLM/O_C-Phazerville](https://github.com/ArguZ-NLM/O_C-Phazerville/tree/XENO-loom).
