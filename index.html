@@ -294,6 +294,14 @@ article.doc.home { padding-top: 40px; }
   article.doc > h1 { font-size: 32px; }
   .home header.hero figure.oled { order: -1; justify-self: stretch; }
   a.dl { display: none; }
+  /* phone top bar: no logo or name; the search box takes the room between menu and theme buttons */
+  .brand { display: none; }
+  .tools { flex: 1; min-width: 0; margin-left: 0; }
+  .search { flex: 1; min-width: 0; }
+  .search input { width: 100%; }
+  .results { width: auto; left: 0; right: 0; }
+  /* home: the boot picture already says LOOM */
+  .home header.hero h1 { display: none; }
   /* sideways: picture on the left, its text next to it */
   .shots { flex-direction: column; }
   .shots figure { flex: none; display: grid; grid-template-columns: minmax(0, 46%) 1fr; gap: 16px; align-items: start; }
