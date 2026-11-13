@@ -162,8 +162,8 @@ article.doc h2 { margin-top: 40px; }
 }
 @media (max-width: 820px) {
   .burger { display: block; }
-  aside.side { transform: translateX(-100%); transition: transform .2s; width: 290px; box-shadow: 4px 0 18px rgba(0,0,0,.2); }
-  body.menu aside.side { transform: none; }
+  aside.side { transform: translateX(-100%); transition: transform .2s; width: 290px; box-shadow: none; }
+  body.menu aside.side { transform: none; box-shadow: 4px 0 18px rgba(0,0,0,.2); }
   body.menu .scrim { display: block; position: fixed; inset: var(--top) 0 0 0; background: rgba(0,0,0,.3); z-index: 9; }
   .layout { margin-left: 0; }
   main { padding: 20px 16px 60px; }
@@ -293,14 +293,17 @@ article.doc.home { padding-top: 40px; }
   article.doc > h1 { font-size: 32px; }
   .home header.hero figure.oled { order: -1; justify-self: stretch; }
   a.dl { display: none; }
-  /* sideways: pictures keep their small size, side by side when two fit */
-  .shots figure { flex: 0 1 276px; }
+  /* sideways: picture on the left, its text next to it */
+  .shots { flex-direction: column; }
+  .shots figure { flex: none; display: grid; grid-template-columns: minmax(0, 46%) 1fr; gap: 16px; align-items: start; }
+  .shots figure figcaption { margin-top: 0; font-size: 14px; }
   .shots .oled { display: block; }
   .shots .oled img { width: 100%; height: auto; }
 }
 @media (max-width: 600px) {
-  /* upright: pictures as wide as the text */
-  .shots figure { flex: 1 1 100%; }
+  /* upright: pictures as wide as the text, text below */
+  .shots figure { display: block; }
+  .shots figure figcaption { margin-top: 8px; font-size: 13px; }
 }
 </style>
 </head>
