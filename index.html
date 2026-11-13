@@ -291,6 +291,10 @@ article.doc.home { padding-top: 40px; }
   article.doc > h1 { font-size: 32px; }
   .home header.hero figure.oled { order: -1; justify-self: stretch; }
   a.dl { display: none; }
+  /* pictures as wide as the text, but never more than 480 px (landscape) */
+  .shots figure { max-width: 480px; }
+  .shots .oled { display: block; }
+  .shots .oled img { width: 100%; height: auto; }
 }
 </style>
 </head>
