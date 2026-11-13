@@ -283,6 +283,10 @@ th { font: 600 12px "IBM Plex Sans", sans-serif; letter-spacing: .06em; }
 article.doc h2.cardh { font: 600 13px "IBM Plex Sans", sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 48px 0 16px; padding: 0; }
 article.doc.home { padding-top: 40px; }
 .home header.hero h1 { margin: 0 0 12px; font-size: 44px; line-height: 1.05; }
+/* no logo or name in the top bar, no title under the boot picture: the picture already says LOOM */
+.brand { display: none; }
+.home header.hero h1 { display: none; }
+
 @media (max-width: 820px) {
   /* sideways iPhone: use the width up to the notch, not a fixed band on both sides */
   main { padding: 0 max(16px, env(safe-area-inset-right)) 64px max(16px, env(safe-area-inset-left)); }
@@ -294,14 +298,12 @@ article.doc.home { padding-top: 40px; }
   article.doc > h1 { font-size: 32px; }
   .home header.hero figure.oled { order: -1; justify-self: stretch; }
   a.dl { display: none; }
-  /* phone top bar: no logo or name; the search box takes the room between menu and theme buttons */
-  .brand { display: none; }
+  /* phone top bar: the search box takes the room between menu and theme buttons */
   .tools { flex: 1; min-width: 0; margin-left: 0; }
   .search { flex: 1; min-width: 0; }
   .search input { width: 100%; }
   .results { width: auto; left: 0; right: 0; }
-  /* home: the boot picture already says LOOM */
-  .home header.hero h1 { display: none; }
+
   /* sideways: picture on the left, its text next to it */
   .shots { flex-direction: column; }
   .shots figure { flex: none; display: grid; grid-template-columns: minmax(0, 46%) 1fr; gap: 16px; align-items: start; }
